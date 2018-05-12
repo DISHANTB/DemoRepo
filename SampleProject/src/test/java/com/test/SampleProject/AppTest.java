@@ -1,5 +1,9 @@
 package com.test.SampleProject;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.ChromeDriverManager;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -34,6 +38,11 @@ public class AppTest
     public void testApp()
     {
     	System.out.println("In Test");
-        assertTrue( true );
+    	String ExpectedTitle = "Selenium - Web Browser Automation";
+        ChromeDriverManager.getInstance().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.seleniumhq.org/");
+        String actualTitle = driver.getTitle();
+        assertEquals(ExpectedTitle, actualTitle);
     }
 }
